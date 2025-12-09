@@ -1,0 +1,78 @@
+/* ---- Zone globale de la page Home ---- */
+
+.home-content {
+  background: #f5f5f8;              /* fond gris clair comme sur le screen */
+  min-height: calc(100vh - 56px);   /* occupe toute la hauteur sous la toolbar */
+  padding: 16px 8px 24px;
+}
+
+.container {
+  max-width: 480px;                 /* largeur max type mobile centré */
+  margin: 0 auto;
+}
+
+/* ---- Message "no tricount" ---- */
+
+.empty-state {
+  margin-top: 48px;
+  color: #666;
+  font-size: 15px;
+}
+
+/* ---- Liste de cartes ---- */
+
+.tricount-list {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;                        /* espace entre les cartes */
+}
+
+/* Carte d’un tricount */
+.tricount-card {
+  background: #e5e5e9;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* Contenu interne de la carte : gauche = infos, droite = "with 3 friends" */
+.tricount-card .mat-mdc-card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+}
+
+/* Bloc gauche : tout en aligné à gauche */
+.tricount-left {
+  text-align: left;
+}
+
+/* Titre du tricount (Vacances, Gers 2022...) */
+.tricount-left .mat-mdc-card-title,
+.tricount-left mat-card-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Description (en italique, plus claire) */
+.description {
+  margin-top: 2px;
+  font-size: 13px;
+  font-style: italic;
+  color: #555;
+}
+
+
+.tricount-left mat-card-subtitle {
+  margin-top: 2px;
+  font-size: 13px;
+  color: #555;
+}
+
+/* Bloc de droite : "with 3 friends" / "you're alone" */
+.tricount-right {
+  font-size: 14px;
+  color: #444;
+  white-space: nowrap;              /* reste sur une seule ligne */
+}

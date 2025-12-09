@@ -1,0 +1,37 @@
+<app-nav-bar class="home-nav" title="Your tricounts">
+  <!-- Bouton refresh -->
+  <button mat-icon-button (click)="refresh()" [disabled]="isRefreshing" matTooltip="Refresh">
+    <mat-icon>refresh</mat-icon>
+  </button>
+
+  <!-- Bouton + (création tricount) -->
+  <button mat-icon-button disabled matTooltip="Create tricount">
+    <mat-icon>add</mat-icon>
+  </button>
+</app-nav-bar>
+
+<div class="home-content">
+  <div class="container text-center">
+    
+    <!-- 1) Cas où il n'y a encore aucun tricount -->
+    <div *ngIf="tricounts.length == 0" class="empty-state text-center">
+      <p>You have no tricount yet.</p>
+    </div>
+
+    <!-- 2) Cas où on a au moins un tricount -->
+    <div *ngIf="tricounts.length > 0" class="tricount-list">
+      <mat-card *ngFor="let t of tricounts" class="tricount-card">
+        <mat-card-content>
+          <div class="tricount-left">
+            <mat-card-title>{{ t.title }}</mat-card-title>
+            <div class="description">{{ t.description || 'No description' }}</div>
+            <mat-card-subtitle>by {{ t.creatorName }}</mat-card-subtitle>
+          </div>
+          
+          <div class="tricount-right">{{ t.mutualFriends }}</div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+  </div>
+</div>

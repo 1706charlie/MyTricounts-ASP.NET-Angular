@@ -1,0 +1,59 @@
+mat-form-field {
+    width: 76%;
+}
+
+.email-field {
+    margin-top: 40px;
+}
+
+.login-debug-panel {
+    border: 1px solid #000;
+    padding: 12px;
+    margin: 12px auto 0;
+    border-radius: 6px;
+    width: 76%;
+}
+
+.login-btn-wrapper {
+    margin-bottom: 25px;
+}
+
+.link-signup {
+    margin-bottom: 25px;
+    font-size: 13px;
+}
+
+.link-signup a {
+    text-decoration: none;
+}
+
+.link-signup a:hover {
+    text-decoration: underline;
+}
+
+.login-divider {
+    width: 60px;
+    height: 1px;
+    background: #000;
+    margin: 8px auto;
+}
+
+.quick-login-link,
+.reset-db-link {
+    background: none;
+    border: none;
+    color: #c00;
+    font-size: 13px;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.quick-login-link:not(:last-child) {
+    margin-right: 8px;
+}
+
+.quick-login-link:hover,
+.reset-db-link:hover {
+    text-decoration: underline;
+}
