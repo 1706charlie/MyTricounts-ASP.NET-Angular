@@ -1,0 +1,13 @@
+<mat-card class="op-card" (click)="onCardClick()">
+  <mat-card-content class="op-content">
+    <div class="op-top">
+      <div class="op-title">{{ operation.title }}</div>
+      <div class="op-amount">{{ operation.amount | number:'1.2-2' }} € </div>
+    </div>
+
+    <div class="op-bottom">
+      <div class="op-paidby">Paid by {{ initiatorName }}</div>
+      <div class="op-date">{{ operation.operationDate | date:'dd/MM/yyyy' }}</div>
+    </div>
+  </mat-card-content>
+</mat-card>

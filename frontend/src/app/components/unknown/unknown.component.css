@@ -1,0 +1,10 @@
+.home-content {
+  background: var(--page-bg);
+  min-height: calc(100vh - 56px);
+  padding: 1px 8px 24px;
+}
+
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+}

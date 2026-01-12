@@ -1,0 +1,33 @@
+.empty-state-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.empty-card {
+  background: var(--surface-bg);
+  border-radius: 18px;
+  padding: 24px 28px;
+  max-width: 380px;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  text-align: center;
+}
+
+.empty-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--text-primary);
+}
+
+.empty-subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 18px;
+}
+
+.empty-card button {
+  padding: 0 32px;
+  border-radius: 999px;
+  font-weight: 600;
+}

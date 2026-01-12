@@ -1,0 +1,50 @@
+.op-card {
+  background: var(--card-bg);
+  border-radius: 14px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  cursor: pointer;
+}
+
+.op-content {
+  padding: 12px 14px;
+}
+
+/* ligne 1: title (gauche) / amount (droite) */
+.op-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.op-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.op-amount {
+  font-size: 18px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--text-primary);
+}
+
+/* ligne 2: paid by (gauche) / date (droite) */
+.op-bottom {
+  margin-top: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.op-paidby {
+  white-space: nowrap;
+}
+
+.op-date {
+  white-space: nowrap;
+}

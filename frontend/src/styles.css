@@ -1,0 +1,377 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "@angular/material/prebuilt-themes/azure-blue.css";
+
+:root {
+  --frame-bg: #4b4b4b;
+  --app-bg: #ffffff;
+  --page-bg: #f5f5f8;
+  --surface-bg: #fdfdfd;
+  --card-bg: #e5e5e9;
+  --card-bg-alt: #f0f0f2;
+  --text-primary: #111111;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+  --border-color: #dddddd;
+  --toolbar-bg: #007FFF;
+  --accent: #007FFF;
+  --drawer-bg: #f5f5f8;
+  --drawer-header-bg: #2196f3;
+  --drawer-action-text: #2b2b2b;
+  --link-color: #0366d6;
+  --danger: #d32f2f;
+  --balance-positive: #7fc48a;
+  --balance-negative: #f28c8c;
+  --overlay-bg: rgba(255, 255, 255, 0.65);
+}
+
+body.dark-mode {
+  --frame-bg: #1d1f21;
+  --app-bg: #121212;
+  --page-bg: #181a1b;
+  --surface-bg: #1f2123;
+  --card-bg: #242628;
+  --card-bg-alt: #2a2c2f;
+  --text-primary: #f0f0f0;
+  --text-secondary: #b6b6b6;
+  --text-muted: #8f8f8f;
+  --border-color: #2c2c2c;
+  --toolbar-bg: #2a2c2f;
+  --accent: #0b4fa3;
+  --drawer-bg: #191b1d;
+  --drawer-header-bg: #0b4fa3;
+  --drawer-action-text: #d0d0d0;
+  --link-color: #6aa8ff;
+  --danger: #ff6b6b;
+  --balance-positive: #5aa56a;
+  --balance-negative: #c96868;
+  --overlay-bg: rgba(0, 0, 0, 0.55);
+  color-scheme: dark;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  color: var(--text-primary);
+}
+
+body.dark-mode .mat-mdc-form-field .mdc-text-field__input,
+body.dark-mode .mat-mdc-form-field .mat-mdc-input-element {
+  color: var(--text-primary) !important;
+  caret-color: var(--text-primary) !important;
+}
+
+body.dark-mode .mat-mdc-form-field {
+  --mdc-outlined-text-field-input-text-color: var(--text-primary);
+  --mdc-outlined-text-field-hover-input-text-color: var(--text-primary);
+  --mdc-outlined-text-field-focus-input-text-color: var(--text-primary);
+  --mdc-outlined-text-field-label-text-color: var(--text-secondary);
+  --mdc-outlined-text-field-hover-label-text-color: var(--text-primary);
+  --mdc-outlined-text-field-focus-label-text-color: var(--text-primary);
+  --mdc-outlined-text-field-outline-color: var(--text-secondary);
+  --mdc-outlined-text-field-hover-outline-color: var(--text-secondary);
+  --mdc-outlined-text-field-focus-outline-color: var(--text-primary);
+  --mdc-outlined-text-field-caret-color: var(--text-primary);
+  --mdc-filled-text-field-input-text-color: var(--text-primary);
+  --mdc-filled-text-field-hover-input-text-color: var(--text-primary);
+  --mdc-filled-text-field-focus-input-text-color: var(--text-primary);
+  --mdc-filled-text-field-label-text-color: var(--text-secondary);
+  --mdc-filled-text-field-hover-label-text-color: var(--text-primary);
+  --mdc-filled-text-field-focus-label-text-color: var(--text-primary);
+  --mdc-filled-text-field-container-color: var(--surface-bg);
+}
+
+body.dark-mode .mat-mdc-form-field:hover .mdc-text-field__input,
+body.dark-mode .mat-mdc-form-field:hover .mat-mdc-input-element {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .mat-mdc-form-field:hover .mdc-floating-label,
+body.dark-mode .mat-mdc-form-field.mat-focused .mdc-floating-label {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .mat-mdc-form-field .mdc-notched-outline__leading,
+body.dark-mode .mat-mdc-form-field .mdc-notched-outline__notch,
+body.dark-mode .mat-mdc-form-field .mdc-notched-outline__trailing {
+  border-color: var(--text-secondary);
+}
+
+body.dark-mode .mat-mdc-form-field.mat-focused .mdc-notched-outline__leading,
+body.dark-mode .mat-mdc-form-field.mat-focused .mdc-notched-outline__notch,
+body.dark-mode .mat-mdc-form-field.mat-focused .mdc-notched-outline__trailing {
+  border-color: var(--text-primary) !important;
+}
+
+body.dark-mode .mat-mdc-form-field .mdc-floating-label {
+  color: var(--text-secondary);
+}
+
+body.dark-mode .mat-mdc-form-field .mdc-text-field__input::placeholder,
+body.dark-mode .mat-mdc-form-field .mat-mdc-input-element::placeholder {
+  color: var(--text-muted);
+}
+
+body.dark-mode .mat-mdc-select-value-text {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .mat-mdc-select-placeholder {
+  color: var(--text-muted) !important;
+}
+
+body.dark-mode .mat-mdc-select-arrow {
+  color: var(--text-secondary) !important;
+}
+
+body.dark-mode .mat-mdc-select-trigger,
+body.dark-mode .mat-mdc-select-trigger .mat-mdc-select-value {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .mat-mdc-select-panel {
+  background: var(--surface-bg);
+}
+
+body.dark-mode .mat-mdc-option .mdc-list-item__primary-text {
+  color: var(--text-primary);
+}
+
+body.dark-mode .mat-mdc-option.mdc-list-item--disabled .mdc-list-item__primary-text {
+  color: var(--text-muted);
+}
+
+body.dark-mode .mat-mdc-dialog-container {
+  --mdc-dialog-container-color: #1f1f1f;
+  color: var(--text-primary);
+}
+
+body.dark-mode .mat-mdc-dialog-container .mdc-dialog__surface {
+  background-color: #1f1f1f;
+  border-radius: 18px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .mat-mdc-dialog-container .mdc-dialog__title,
+body.dark-mode .mat-mdc-dialog-container .mdc-dialog__content,
+body.dark-mode .mat-mdc-dialog-container .mdc-dialog__actions {
+  color: var(--text-primary);
+}
+
+body.dark-mode .mat-mdc-dialog-container .mdc-dialog__content {
+  color: var(--text-primary);
+}
+
+body.dark-mode .mat-mdc-dialog-container .mat-mdc-button,
+body.dark-mode .mat-mdc-dialog-container .mat-mdc-button .mdc-button__label {
+  color: var(--text-primary);
+}
+
+body.dark-mode .mat-mdc-dialog-container .mat-mdc-button {
+  border: 1px solid var(--text-primary);
+}
+
+body.dark-mode .empty-card button.mat-mdc-button,
+body.dark-mode .empty-card button.mat-mdc-raised-button,
+body.dark-mode .empty-card button.mat-mdc-unelevated-button,
+body.dark-mode .empty-card button.mat-mdc-outlined-button,
+body.dark-mode .empty-card button.mat-mdc-stroked-button {
+  color: var(--text-primary);
+  border: 1px solid var(--text-primary);
+  background: transparent;
+}
+
+body.dark-mode .empty-card button .mdc-button__label {
+  color: var(--text-primary);
+}
+
+body.dark-mode .rep-btns button.mat-mdc-button,
+body.dark-mode .rep-btns button.mat-mdc-raised-button,
+body.dark-mode .rep-btns button.mat-mdc-unelevated-button,
+body.dark-mode .rep-btns button.mat-mdc-outlined-button,
+body.dark-mode .rep-btns button.mat-mdc-stroked-button {
+  color: var(--text-primary);
+  border: 1px solid var(--text-primary);
+  background: #2b2b2b;
+}
+
+body.dark-mode .rep-btns button .mdc-button__label {
+  color: var(--text-primary);
+}
+
+body.dark-mode .mat-mdc-dialog-container .mat-mdc-outlined-button,
+body.dark-mode .mat-mdc-dialog-container .mat-mdc-stroked-button {
+  --mdc-outlined-button-outline-color: var(--text-primary);
+  --mdc-outlined-button-outline-width: 1px;
+  border-color: var(--text-primary);
+}
+
+body.dark-mode .mat-mdc-dialog-container .mat-mdc-outlined-button .mdc-notched-outline__leading,
+body.dark-mode .mat-mdc-dialog-container .mat-mdc-outlined-button .mdc-notched-outline__notch,
+body.dark-mode .mat-mdc-dialog-container .mat-mdc-outlined-button .mdc-notched-outline__trailing,
+body.dark-mode .mat-mdc-dialog-container .mat-mdc-stroked-button .mdc-notched-outline__leading,
+body.dark-mode .mat-mdc-dialog-container .mat-mdc-stroked-button .mdc-notched-outline__notch,
+body.dark-mode .mat-mdc-dialog-container .mat-mdc-stroked-button .mdc-notched-outline__trailing {
+  border-color: var(--text-primary) !important;
+}
+
+body.dark-mode .login-wrapper .mat-mdc-stroked-button,
+body.dark-mode .signup-wrapper .mat-mdc-stroked-button,
+body.dark-mode .login-wrapper .mat-mdc-outlined-button,
+body.dark-mode .signup-wrapper .mat-mdc-outlined-button {
+  color: var(--text-primary);
+  --mdc-outlined-button-label-text-color: var(--text-primary);
+  --mdc-outlined-button-outline-color: var(--text-primary);
+  --mdc-outlined-button-outline-width: 1px;
+  border-color: var(--text-primary);
+}
+
+body.dark-mode .login-wrapper .mat-mdc-stroked-button .mdc-button__label,
+body.dark-mode .signup-wrapper .mat-mdc-stroked-button .mdc-button__label,
+body.dark-mode .login-wrapper .mat-mdc-outlined-button .mdc-button__label,
+body.dark-mode .signup-wrapper .mat-mdc-outlined-button .mdc-button__label {
+  color: var(--text-primary);
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: var(--text-primary);
+}
+
+body {
+  min-height: 100vh;
+  background: var(--frame-bg);
+  padding: 20px;
+  display: block;
+}
+
+@media (min-width: 769px) {
+  body {
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    min-height: 100vh;
+  }
+
+  body::before,
+  body::after {
+    content: '';
+    height: 40px;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    background: var(--app-bg);
+    padding: 0;
+    align-items: stretch;
+  }
+}
+
+app-root {
+  display: block;
+  width: 375px;
+  max-width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  background: var(--app-bg);
+  border: 0px solid var(--border-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+@media (min-width: 769px) {
+  app-root {
+    width: 400px;
+    margin: 0 auto;
+    height: 100vh;
+  }
+}
+
+@media (max-width: 768px) {
+  app-root {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+.main-content {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--app-bg);
+}
+
+.home-content {
+  height: calc(100vh - 56px);
+  min-height: calc(100vh - 56px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: block;
+  padding: 16px;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Provide sufficient contrast against white background */
+
+a {
+    color: var(--link-color);
+}
+
+code {
+    color: #e01a76;
+}
+
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.tooltip-open-nav-menu {
+  margin-left: 100px;
+}
+
+.tooltip-delete-tricount {
+  margin-right: 55px;
+}
+
+.tooltip-balance-refresh {
+  margin-right: 15px;
+}
+
+.tooltip-create-tricount {
+  margin-right: 55px;
+}
+
+.tooltip-edit-tricount { /* uniquement si delete tricount n'est pas affiché */
+  margin-right: 40px;
+}
+
+.tooltip-save-tricount {
+  margin-right: 46px;
+}
+
+.tooltip-add-operation {
+  margin-right: 58px;
+}
+
+.tooltip-delete-operation {
+  margin-right: 66px;
+}
+
+.tooltip-edit-operation { /* uniquement si delete operation n'est pas affiché */
+  margin-right: 56px;
+}

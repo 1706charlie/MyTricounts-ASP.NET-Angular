@@ -1,0 +1,11 @@
+<mat-card class="tricount-card" (click)="onCardClick()">
+  <mat-card-content>
+    <div class="tricount-left">
+      <mat-card-title>{{ tricount.title }}</mat-card-title>
+      <div class="description">{{ tricount.description || 'No description' }}</div>
+      <mat-card-subtitle>by {{ tricount.creator.fullName }}</mat-card-subtitle>
+    </div>
+
+    <div class="tricount-right">{{ friendsText }}</div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+  @if (!hideMenu) {
+    @if (backUrl) {
+      <button mat-icon-button (click)="goBack()" matTooltip="Back">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    } @else {
+      <button mat-icon-button (click)="openDrawerClick()" matTooltip="Open navigation menu" matTooltipClass="tooltip-menu-nav">
+        <mat-icon>menu</mat-icon>
+      </button>
+    }
+  } 
+  <span class="title">{{ title }}</span>
+  <span class="spacer"></span>
+  <!-- 
+    ng-content : Projection de contenu Angular
+    Permet d'insérer du contenu depuis le composant parent dans ce composant enfant.
+    Le contenu placé entre les balises <app-nav-bar>...</app-nav-bar> dans le parent
+    sera automatiquement projeté à cet emplacement.
+    Exemple d'utilisation dans le parent :
+    <app-nav-bar title="Mon titre">
+      <button mat-icon-button><mat-icon>settings</mat-icon></button>
+    </app-nav-bar>
+    Le bouton sera inséré ici, à droite du toolbar.
+  -->
+  <ng-content/>
+</mat-toolbar>

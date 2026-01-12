@@ -1,0 +1,93 @@
+<app-nav-bar class="home-nav" [title]="tricount?.title ?? 'Tricount'" [backUrl]="'/'">
+  <!-- refresh -->
+  <button mat-icon-button (click)="refresh()" matTooltip="Refresh">
+    <mat-icon>refresh</mat-icon>
+  </button>
+
+  @if (tricount) {
+    <!-- edit -->
+    <button mat-icon-button (click)="openEditTricount()" matTooltip="Edit tricount" [matTooltipClass]="!canDeleteTricount ? 'tooltip-edit-tricount' : ''">
+      <mat-icon>edit</mat-icon>
+    </button>
+
+    <!-- delete -->
+    @if (canDeleteTricount) {
+      <button mat-icon-button (click)="confirmDeleteTricount()" matTooltip="Delete tricount" matTooltipClass="tooltip-delete-tricount">
+        <mat-icon>delete</mat-icon>
+      </button>
+    }
+  }  
+</app-nav-bar>
+
+<div class="page">
+  @if (isRefreshing) {
+    <app-loading-overlay></app-loading-overlay>
+  }
+  <div class="home-content">
+    <div class="container">
+
+      @if (tricountNotFound) {
+        <app-tricount-not-found></app-tricount-not-found>
+      } @else if (tricount) {
+        <button mat-raised-button class="balance-btn" (click)="viewBalance()" [disabled]="!hasOperations">
+          <mat-icon>swap_horiz</mat-icon>
+          <span>View Balance</span>
+        </button>
+        
+        @if (hasOperations) {
+          <div class="tricount-list">
+            @for (operation of operations; track operation.id) {
+              <app-operation-card
+                [operation]="operation"
+                [tricount]="tricount!"
+                (cardClick)="openEditOperation(operation.id)"
+              ></app-operation-card>
+            }
+          </div>
+        } @else if (isAlone) {
+          <app-empty-state
+            title="You're alone!"
+            subtitle="Click below to add your friends!"
+            buttonLabel="Add friends"
+            (buttonClick)="openEditTricount()"
+          ></app-empty-state>
+        } @else {
+          <app-empty-state
+            title="Your tricount is empty!"
+            subtitle="Click below to add your first expense!"
+            buttonLabel="Add an expense"
+            (buttonClick)="openAddOperation()"
+          ></app-empty-state>
+        }
+
+      }
+    </div>
+  </div>
+
+  <!-- bottom bar -->
+  @if (tricount) {
+    <div class="bottom-bar">
+      <div class="bottom-bar-inner">
+        <div class="col left">
+          <div class="label">MY TOTAL</div>
+          @if (isBalanceLoadingInService || isBalanceLoading) {
+            <div class="value value-loading">calculating...</div>
+          } @else {
+            <div class="value">{{ myTotalDue | number:'1.2-2' }} €</div>
+          }
+        </div>
+
+        <button mat-fab type="button" class="add-fab" (click)="openAddOperation()">
+          <mat-icon>add</mat-icon>
+        </button>
+
+        <div class="col right">
+          <div class="label">TOTAL EXPENSES</div>
+          <div class="value">{{ totalExpenses | number:'1.2-2' }} €</div>
+        </div>
+      </div>
+    </div>
+  }
+
+
+</div>

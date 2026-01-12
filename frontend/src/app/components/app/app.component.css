@@ -1,0 +1,94 @@
+mat-toolbar.mat-primary {
+  background-color: var(--toolbar-bg) !important;
+  color: white !important;
+}
+
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+mat-toolbar mat-icon {
+  color: white !important;
+}
+
+mat-toolbar button {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Décaller le titre de la page login */
+:host ::ng-deep app-nav-bar.login-nav .title {
+  margin-left: 15px;
+}
+
+/* Décaller le titre de la page Your tricounts */
+:host ::ng-deep app-nav-bar.home-nav .title {
+  margin-left: 20px;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+mat-sidenav {
+  width: 260px !important;
+  max-width: 90vw;
+  padding: 0;
+  background: var(--drawer-bg);
+}
+
+.drawer-header {
+  background: var(--drawer-header-bg);
+  color: white;
+  padding: 32px 16px 24px 16px;
+  text-align: left;
+}
+
+.user-info {
+  margin-top: 8px;
+}
+
+.user-name {
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.user-email {
+  font-size: 0.95em;
+  opacity: 0.9;
+}
+
+.drawer-actions {
+  padding: 16px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.drawer-actions button {
+  justify-content: flex-start;
+  text-align: left;
+  color: var(--drawer-action-text);
+}
+
+.drawer-actions span {
+  text-align: left;
+  width: 100%;
+  display: inline-block;
+}
+
+.drawer-actions mat-icon {
+  color: var(--drawer-action-text);
+}
+
+mat-divider {
+  margin: 12px 0;
+}

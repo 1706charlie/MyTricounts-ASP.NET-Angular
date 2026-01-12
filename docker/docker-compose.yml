@@ -1,0 +1,26 @@
+services:
+  backend:
+    build: .
+    ports:
+      - "80:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://*:80
+    entrypoint: ["/app/wait-for-postgres.sh", "dotnet", "backend.dll"]
+    depends_on:
+      - db
+    restart: unless-stopped
+  db:
+    # image: postgres:17.2
+    image: ghcr.io/enterprisedb/postgresql:17.2
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: prid-2526-f03
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: dummy123
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:

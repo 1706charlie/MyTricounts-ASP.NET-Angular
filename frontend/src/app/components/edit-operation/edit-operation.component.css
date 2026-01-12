@@ -1,0 +1,167 @@
+.add-content {
+  background: var(--page-bg);
+  min-height: calc(100vh - 56px);
+  padding: 16px 8px 24px;
+}
+
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Champs plein écran */
+.full-width {
+  width: 100%;
+}
+
+.text-field {
+  margin-bottom: 8px;
+}
+
+/* Erreurs sous les champs */
+.field-error {
+  font-size: 12px;
+}
+
+/* Gérer la distance entre les inputs */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 6px;
+}
+
+/* Gérer la distance entre l'input et l'error */
+:host ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  margin-top: -6px;
+}
+
+.section-title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.rep-error {
+  color: var(--danger);
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* Ligne de répartition : plus compacte + fond gris léger */
+.rep-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+
+/* Checkbox + texte : alignés et pas trop décalés */
+:host ::ng-deep .rep-line .mdc-form-field {
+  margin: 0;
+}
+:host ::ng-deep .rep-line .mat-mdc-checkbox {
+  transform: translateX(-4px);
+  color: var(--text-primary);
+}
+
+:host-context(body.dark-mode) ::ng-deep .rep-line .mdc-form-field > label,
+:host-context(body.dark-mode) ::ng-deep .rep-line .mdc-label {
+  color: var(--text-primary);
+}
+
+:host-context(body.dark-mode) ::ng-deep .rep-line .mat-mdc-checkbox {
+  --mdc-checkbox-unselected-icon-color: var(--text-primary);
+  --mdc-checkbox-unselected-hover-icon-color: var(--text-primary);
+  --mdc-checkbox-unselected-focus-icon-color: var(--text-primary);
+  --mdc-checkbox-unselected-pressed-icon-color: var(--text-primary);
+  --mdc-checkbox-selected-icon-color: var(--text-primary);
+  --mdc-checkbox-selected-hover-icon-color: var(--text-primary);
+  --mdc-checkbox-selected-focus-icon-color: var(--text-primary);
+  --mdc-checkbox-selected-pressed-icon-color: var(--text-primary);
+  --mdc-checkbox-selected-checkmark-color: var(--page-bg);
+}
+
+/* Bloc droite : valeurs + pill */
+.rep-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.rep-values {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.3;
+  min-width: 64px;
+}
+
+.rep-weight {
+  font-weight: 700;
+  font-size: 14px;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.rep-amount {
+  font-size: 13px;
+  opacity: 0.8;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+/* Le "pill" - + (un seul bloc arrondi) */
+.rep-pill {
+  display: flex;
+  align-items: center;
+  border: 1px solid #c7ccd4;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 36px;
+  background: #f0f2f5;
+}
+
+/* boutons internes du pill */
+.pill-btn {
+  width: 44px;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.pill-btn:active {
+  background: rgba(0,0,0,0.06);
+}
+
+/* petite séparation entre - et + */
+.rep-pill .pill-btn + .pill-btn {
+  border-left: 1px solid #c7ccd4;
+}
+
+:host-context(body.dark-mode) .rep-pill {
+  border-color: var(--text-primary);
+  background: #2b2b2b;
+}
+
+:host-context(body.dark-mode) .pill-btn {
+  color: var(--text-primary);
+  background: transparent;
+}
+
+:host-context(body.dark-mode) .pill-btn:active {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+:host-context(body.dark-mode) .rep-pill .pill-btn + .pill-btn {
+  border-left-color: var(--text-primary);
+}
+
+:host-context(body.dark-mode) ::ng-deep .mat-mdc-form-field-text-prefix {
+  color: #fff !important;
+  opacity: 1 !important;
+}

@@ -1,0 +1,97 @@
+.add-content {
+  background: var(--page-bg);
+  min-height: calc(100vh - 56px);
+  padding: 16px 8px 24px;
+}
+
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Champs plein écran */
+.full-width {
+  width: 100%;
+}
+
+.text-field {
+  margin-bottom: 8px;
+}
+
+:host ::ng-deep .text-field .mat-mdc-form-field-subscript-wrapper {
+  margin-top: -6px;
+}
+
+/* Label "Participants" */
+.section-title {
+  margin-top: 3px;
+  margin-bottom: 12px;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+/* Erreurs sous les champs */
+.field-error {
+  font-size: 12px;
+}
+
+/* Ligne participant (icône + nom + bouton à droite) */
+.participant-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.participant-line .left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transform: translateX(16px);
+}
+
+.participant-line .name {
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.participant-line .name.creator {
+  font-weight: 900;
+}
+
+.participant-line mat-icon {
+  color: var(--text-primary);
+}
+/* Ligne "Add a new participant" */
+.participant-add-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.participant-add-row .full-width {
+  flex: 1;
+}
+
+.participant-add-row button {
+  transform: translate(-6px, -14px);
+  color: var(--text-primary);
+}
+
+.participant-add-row button.mat-mdc-icon-button.mat-mdc-button-disabled {
+  color: var(--text-primary);
+  opacity: 1;
+}
+.participant-line button {
+  transform: translateX(-25px);
+}
+
+.participant-line button.mat-mdc-icon-button.mat-mdc-button-disabled {
+  opacity: 1;
+}
+
+.participant-line button[disabled] mat-icon {
+  color: var(--text-muted);
+}

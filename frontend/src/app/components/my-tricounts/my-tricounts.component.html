@@ -1,0 +1,44 @@
+<app-nav-bar class="home-nav" title="Your tricounts">
+  <!-- Bouton refresh -->
+  <button mat-icon-button (click)="refresh()" [disabled]="isRefreshing" matTooltip="Refresh">
+    <mat-icon>refresh</mat-icon>
+  </button>
+
+  <!-- Bouton add tricount -->
+  <button mat-icon-button (click)="openAddTricount()" matTooltip="Create tricount" matTooltipClass="tooltip-create-tricount">
+    <mat-icon>add</mat-icon>
+  </button>
+</app-nav-bar>
+
+<div class="home-content">
+  <div class="container text-center">
+
+    @if (isRefreshing) {
+      <app-loading-overlay></app-loading-overlay>
+    }
+    
+    <!-- aucun tricount -->
+    @if (tricounts.length === 0) {
+      <app-empty-state
+        title="No tricounts yet!"
+        subtitle="Create your first tricount now!"
+        buttonLabel="Create tricount"
+        topMargin="280px"
+        (buttonClick)="openAddTricount()"
+      ></app-empty-state>
+    }
+    
+    <!-- au moins un tricount -->
+    @if (tricounts.length > 0) {
+      <div class="tricount-list">
+        @for (tricount of tricounts; track tricount.id) {
+          <app-tricount-card
+            [tricount]="tricount"
+            (cardClick)="openTricount(tricount)"
+          ></app-tricount-card>
+        }
+      </div>
+    }
+    
+  </div>
+</div>

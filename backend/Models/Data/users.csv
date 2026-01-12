@@ -1,0 +1,7 @@
+﻿id;email;password;full_name;iban;role
+1;boverhaegen@epfc.eu;Password1,;Boris;;basic_user
+2;bepenelle@epfc.eu;Password1,;Benoît;;basic_user
+3;xapigeolet@epfc.eu;Password1,;Xavier;;basic_user
+4;mamichel@epfc.eu;Password1,;Marc;BE12 1234 1234 1234;basic_user
+5;gedielman@epfc.eu;Password1,;Geoffrey;BE45 4567 4567 4567;basic_user
+9;admin@epfc.eu;Password1,;Admin;;admin

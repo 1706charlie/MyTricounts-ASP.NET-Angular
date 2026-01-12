@@ -1,0 +1,87 @@
+<app-nav-bar class="login-nav" title="Login" [hideMenu]="true">
+</app-nav-bar>
+
+<div class="home-content">
+    @if (isLoading) {
+        <app-loading-overlay></app-loading-overlay>
+    }
+    <div class="container text-center login-wrapper">
+
+        <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+
+            <!-- Email -->
+            <mat-form-field class="email-field" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" [formControl]="ctlEmail" required appSetFocus> 
+
+                @if (ctlEmail.hasError('required')) {
+                    <mat-error class="field-error">Required</mat-error>
+                }
+                @if (ctlEmail.hasError('pattern')) {
+                    <mat-error class="field-error">not a valid email</mat-error>
+                }
+            </mat-form-field>
+
+            <!-- Password -->
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" [formControl]="ctlPassword" required>
+
+                <!-- 1. Required -->
+                @if (ctlPassword.hasError('required')) {
+                    <mat-error class="field-error">Required</mat-error>
+                }
+
+                <!-- 2. Uppercase missing -->
+                @else if (ctlPassword.touched && pwdMissingUpper) {
+                    <mat-error class="field-error">At least one uppercase letter</mat-error>
+                }
+
+                <!-- 3. Digit missing -->
+                @else if (ctlPassword.touched && !pwdMissingUpper && pwdMissingDigit) {
+                    <mat-error class="field-error">At least one number</mat-error>
+                }
+
+                <!-- 4. Special missing -->
+                @else if (ctlPassword.touched && !pwdMissingUpper && !pwdMissingDigit && pwdMissingSpecial) {
+                    <mat-error class="field-error">At least one special character (@#$!%*?…)</mat-error>
+                }
+
+                <!-- 5. Minimum length -->
+                @else if (ctlPassword.touched && !pwdMissingUpper && !pwdMissingDigit && !pwdMissingSpecial && pwdTooShort) {
+                    <mat-error class="field-error">At least 8 characters</mat-error>
+                }
+            </mat-form-field>
+
+            <!-- bouton login -->
+            <div class="login-btn-wrapper">
+                <button
+                    mat-stroked-button
+                    type="submit"
+                    [disabled]="loginForm.invalid || isLoading">
+                    Login
+                </button>
+            </div>
+
+        </form> 
+
+        <!-- signup -->
+        <p class="link-signup"><a routerLink="/signup">Don't have an account? Sign up here!</a></p>
+
+        <!-- login for debug -->
+        <div class="login-debug-panel"> 
+            <!-- quick login -->
+            <div class="quick-logins">
+                @for (account of quickAccounts; track account.email) {
+                    <button type="button" class="quick-login-link" (click)="quickLogin(account)">Login as {{ account.email }}</button>
+                }
+            </div>
+
+            <div class="login-divider"></div>
+
+            <!-- reset data base -->
+            <button type="button" class="reset-db-link" (click)="resetDatabase()">Reset Database</button>
+        </div>
+        
+    </div>
+</div>

@@ -1,0 +1,68 @@
+<app-nav-bar class="home-nav" title="Balance" [backUrl]="backUrl">
+  <!-- Bouton refresh -->
+  <button mat-icon-button (click)="refresh()" [disabled]="isRefreshing" matTooltip="Refresh" matTooltipClass="tooltip-balance-refresh">
+    <mat-icon>refresh</mat-icon>
+  </button>
+
+</app-nav-bar>
+
+<div class="home-content">
+  <div class="container">
+
+    @if (isRefreshing) {
+        <app-loading-overlay></app-loading-overlay>
+    }
+
+    @if (tricountNotFound) {
+      <app-tricount-not-found></app-tricount-not-found>
+    } @else if (tricount) {
+      @for (balance of sortedBalances; track balance.userId) {
+        <div class="row">
+          <div class="cell left">
+            @if ((balance.balance!) < 0) {
+              <div class="bar-wrap">
+                <div class="bar"
+                    [class.positive]="(balance.balance!) > 0"
+                    [class.negative]="(balance.balance!) < 0"
+                    [style.width]="barWidth(balance.balance!)">
+                </div>
+                <div class="bar-text">
+                  {{ (balance.balance!) | number:'1.2-2' }} €
+                </div>
+              </div>
+            } @else {
+              <div
+                class="name name-left"
+                [class.me]="balance.userId === currentUserId">
+                {{ getUserName(balance.userId!) }}
+              </div>
+            }
+          </div>
+
+          <div class="cell right">
+            @if ((balance.balance!) < 0) {
+              <div
+                class="name name-right"
+                [class.me]="balance.userId === currentUserId">
+                {{ getUserName(balance.userId!) }}
+              </div>
+            } @else {
+              <div class="bar-wrap">
+                <div class="bar"
+                    [class.positive]="(balance.balance!) > 0"
+                    [class.negative]="(balance.balance!) < 0"
+                    [style.width]="barWidth(balance.balance!)">
+                </div>
+                <div class="bar-text">
+                  {{ (balance.balance!) | number:'1.2-2' }} €
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    }
+
+    
+  </div>
+</div>

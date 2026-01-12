@@ -1,0 +1,90 @@
+@startuml Class Diagram - Tricount Backend Model
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam nodesep 150
+skinparam ranksep 150
+scale 2.6
+
+enum Role {
+  BasicUser
+  Admin
+}
+
+class UserEntity {
+  Id : int
+  Email : string
+  Name : string
+  PasswordHash : string
+  Iban : string?
+  Role : Role
+  --
+  Password : string <<NotMapped>>
+  Token : string? <<NotMapped>>
+  --
+  Tricounts : ICollection<TricountEntity>
+  CreatedTricounts : ICollection<TricountEntity>
+  Participations : ICollection<ParticipationEntity>
+  Operations : ICollection<OperationEntity>
+  InitiatedOperations : ICollection<OperationEntity>
+  Repartitions : ICollection<RepartitionEntity>
+}
+
+class TricountEntity {
+  Id : int
+  Title : string
+  Description : string?
+  CreatorId : int
+  CreatedAt : DateTime
+  --
+  Creator : UserEntity
+  Participants : ICollection<UserEntity>
+  Participations : ICollection<ParticipationEntity>
+  Operations : ICollection<OperationEntity>
+}
+
+class ParticipationEntity {
+  TricountId : int
+  UserId : int
+  --
+  Tricount : TricountEntity
+  User : UserEntity
+}
+
+class OperationEntity {
+  Id : int
+  Title : string
+  Amount : decimal
+  OperationDate : DateOnly
+  CreatedAt : DateTime
+  InitiatorId : int
+  TricountId : int
+  --
+  Initiator : UserEntity
+  Tricount : TricountEntity
+  Participants : ICollection<UserEntity>
+  Repartitions : ICollection<RepartitionEntity>
+}
+
+class RepartitionEntity {
+  OperationId : int
+  UserId : int
+  Weight : int
+  --
+  Operation : OperationEntity
+  User : UserEntity
+}
+
+UserEntity "0..* CreatedTricounts" -- "1 Creator" TricountEntity
+TricountEntity "1 Tricount" -- "0..* Operations" OperationEntity
+UserEntity "0..* InitiatedOperations" -- "1 Initiator" OperationEntity
+
+UserEntity "1 User" -- "0..* Participations" ParticipationEntity
+TricountEntity "1 Tricount" -- "0..* Participations" ParticipationEntity
+
+UserEntity "1 User" -- "0..* Repartitions" RepartitionEntity
+OperationEntity "1 Operation" -- "0..* Repartitions" RepartitionEntity
+
+UserEntity "0..* Tricounts" -- "0..* Participants" TricountEntity
+UserEntity "0..* Operations" -- "0..* Participants" OperationEntity
+
+@enduml

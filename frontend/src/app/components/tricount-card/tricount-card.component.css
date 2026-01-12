@@ -1,0 +1,47 @@
+.tricount-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* Contenu interne de la carte : gauche = infos, droite = "with 3 friends" */
+.tricount-card .mat-mdc-card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+}
+
+/* Bloc gauche : tout en aligné à gauche */
+.tricount-left {
+  text-align: left;
+}
+
+/* Titre du tricount (Vacances, Gers 2022...) */
+.tricount-left .mat-mdc-card-title,
+.tricount-left mat-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Description (en italique, plus claire) */
+.description {
+  margin-top: 2px;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.tricount-left mat-card-subtitle {
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* Bloc de droite : "with 3 friends" / "you're alone" */
+.tricount-right {
+  font-size: 14px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}

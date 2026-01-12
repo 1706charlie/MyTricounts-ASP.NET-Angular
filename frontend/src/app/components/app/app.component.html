@@ -1,0 +1,34 @@
+<mat-sidenav-container>
+  <!-- Drawer -->
+  <mat-sidenav #drawer>
+    <!-- Header du drawer -->
+    <div class="drawer-header">
+      <div class="user-info">
+        <div class="user-name">{{ currentUser?.fullName }}</div>
+        <div class="user-email">{{ currentUser?.email }}</div>
+      </div>
+    </div>
+    <!-- Actions du drawer -->
+    <div class="drawer-actions">
+      <button mat-button tabindex="-1" (click)="toggleTheme()">
+        <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
+        <span>{{ isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode' }}</span>
+      </button>
+      <button mat-button (click)="logout()" tabindex="-1">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-button color="warn" (click)="resetDatabase()" tabindex="-1">
+        <mat-icon>restart_alt</mat-icon>
+        <span>Reset Database</span>
+      </button>
+    </div>
+  </mat-sidenav>
+  <!-- Contenu principal de l'application -->
+  <mat-sidenav-content>
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

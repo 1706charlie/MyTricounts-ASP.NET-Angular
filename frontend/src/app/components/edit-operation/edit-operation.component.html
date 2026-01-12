@@ -1,0 +1,149 @@
+<app-nav-bar class="home-nav" title="Edit Operation" [backUrl]="backUrl">
+  @if (tricount && operation) {
+    <!-- Bouton save -->
+    <button mat-icon-button type="submit" form="editOperationForm"
+          [disabled]="form.invalid" 
+          matTooltip="Save Operation" [matTooltipClass]="!canDeleteOperation ? 'tooltip-edit-operation' : ''">
+      <mat-icon>save</mat-icon>
+    </button>
+
+    @if (canDeleteOperation) {
+      <button mat-icon-button type="button" (click)="confirmDeleteOperation()"
+              matTooltip="Delete Operation" matTooltipClass="tooltip-delete-operation">
+        <mat-icon>delete</mat-icon>
+      </button>
+    }
+  }
+</app-nav-bar>
+
+<div class="add-content">
+  <div class="container">
+
+    @if (tricountNotFound) {
+      <app-tricount-not-found></app-tricount-not-found>
+    } @else if (operationNotFound) {
+      <app-operation-not-found [backUrl]="backUrl"></app-operation-not-found>
+    } @else if (tricount && operation) {
+      <form [formGroup]="form" (ngSubmit)="saveOperation()" id="editOperationForm" novalidate>
+
+          <!-- Title -->
+          <mat-form-field class="full-width text-field" appearance="outline">
+            <mat-label>Title</mat-label>
+            <input matInput [formControl]="ctlTitle" required appSetFocus>
+
+            @if (ctlTitle.hasError('required')) {
+              <mat-error class="field-error">required</mat-error>
+            }
+            @if (ctlTitle.hasError('minlength')) {
+              <mat-error class="field-error">minimum {{ ctlTitle.errors?.['minlength']?.requiredLength }} characters</mat-error>
+            }
+          </mat-form-field>
+
+          <!-- Amount -->
+          <mat-form-field class="full-width text-field" appearance="outline">
+            <mat-label>Amount</mat-label>
+            @if (showAmountPrefix) {
+              <span matTextPrefix>€&nbsp;</span>
+            }
+            <input
+              matInput
+              type="number"
+              inputmode="decimal"
+              step="0.01"
+              [formControl]="ctlAmount"
+              required
+              (focus)="isAmountFocused = true"
+              (blur)="isAmountFocused = false"
+            >        <!-- focus -> quand l'input recoit le focus. blur -> quand l'input perd le focus -->
+
+            @if (ctlAmount.hasError('required')) {
+              <mat-error class="field-error">required</mat-error>
+            }
+            @if (ctlAmount.hasError('min')) {
+              <mat-error class="field-error">minimum 0.01 €</mat-error>
+            }
+          </mat-form-field>
+
+          <!-- Operation Date -->
+          <mat-form-field class="full-width text-field" appearance="outline">
+            <mat-label>Operation Date</mat-label>
+
+            <input
+              matInput
+              [matDatepicker]="picker"
+              [formControl]="ctlOperationDate"
+              [min]="minOperationDate"
+              [max]="maxOperationDate"
+              maxlength="10"
+              required
+              (keydown)="onOperationDateKeydown($event)"
+              (beforeinput)="onOperationDateBeforeInput($event)"
+              (paste)="onOperationDatePaste($event)"
+              (drop)="onOperationDateDrop($event)"
+            />
+
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+
+            @if (ctlOperationDate.hasError('required')) {
+              <mat-error class="field-error">required</mat-error>
+            }
+            @if (ctlOperationDate.hasError('beforeTricountCreation')) {
+              <mat-error class="field-error">may not be before the tricount creation date</mat-error>
+            }
+            @if (ctlOperationDate.hasError('dateInFuture')) {
+              <mat-error class="field-error">may not be in the future</mat-error>
+            }
+          </mat-form-field>
+
+          <!-- Paid by -->
+          <mat-form-field class="full-width text-field" appearance="outline">
+            <mat-label>Paid by</mat-label>
+
+            <mat-select [formControl]="ctlPaidBy" required>
+              @for (participant of sortedParticipants; track participant.id) {
+                <mat-option [value]="participant.id"> {{ participant.fullName }} </mat-option>
+              }
+            </mat-select>
+
+            @if (ctlPaidBy.hasError('required')) {
+              <mat-error class="field-error">required</mat-error>
+            }
+          </mat-form-field>
+
+          <!-- From whom -->
+          <h2 class="section-title">From whom?</h2>
+
+          @if (repartitions.errors?.['noParticipant']) {
+            <div class="rep-error">At least one participant must be selected.</div>
+          }
+
+          <div formArrayName="repartitions">
+            @for (repartition of repartitions.controls; track $index; let i = $index) {
+              <div class="rep-line" [formGroupName]="i">
+
+                <mat-checkbox formControlName="checked" (change)="toggleChecked(i)">
+                  {{ sortedParticipants[i].fullName }}
+                </mat-checkbox>
+
+                <div class="rep-right">
+                  <div class="rep-values">
+                    <div class="rep-weight">{{ repartition.value.weight }}x</div>
+                    <div class="rep-amount">{{ shareFor(i) | number:'1.2-2' }} €</div>
+                  </div>
+
+                  <div class="rep-pill">
+                    <button type="button" class="pill-btn" (click)="decWeight(i)">−</button>
+                    <button type="button" class="pill-btn" (click)="incWeight(i)">+</button>
+                  </div>
+                </div>
+
+              </div>
+            }
+          </div>
+
+        </form>
+    }
+    
+  </div>
+</div>

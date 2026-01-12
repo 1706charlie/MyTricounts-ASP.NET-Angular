@@ -1,0 +1,155 @@
+.home-content {
+  background: var(--page-bg);
+  padding: 9px 8px 24px;
+
+  flex: 1 1 auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  min-height: 0;
+
+  padding-bottom: calc(24px + 72px + env(safe-area-inset-bottom));
+}
+
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.page {
+  height: calc(100vh - 56px); /* 56px = hauteur navbar */
+  display: flex;
+  flex-direction: column;
+  background: var(--page-bg);
+  position: relative;
+
+  overflow: hidden; /* empêche le scroll global */
+  min-height: 0;    /* important en flex column */
+}
+
+/* liste des opérations */
+.tricount-list {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.balance-btn {
+  width: 100%;
+  margin: 0 0 8px 0;
+  padding: 0;
+  border-radius: 14px;
+  font-weight: 500;
+  font-size: 18px;
+  background-color: green;
+  color: white;
+}
+
+.balance-btn:disabled,
+.balance-btn.mat-mdc-button-disabled {
+  background-color: var(--card-bg-alt);
+  color: var(--text-muted);
+}
+
+.balance-btn:disabled mat-icon,
+.balance-btn.mat-mdc-button-disabled mat-icon {
+  color: var(--text-muted);
+}
+
+/* barre fixe en bas */
+/* bottom bar n'est PLUS fixed */
+.bottom-bar {
+  flex: 0 0 auto;
+
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+
+  background: var(--card-bg-alt);
+  border-top: 1px solid var(--border-color);
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
+
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* largeur desktop identique*/
+@media (min-width: 769px) {
+  .bottom-bar {
+    width: 400px;
+    max-width: 400px;
+  }
+}
+
+/* contenu centré (même largeur que ton container) */
+.bottom-bar-inner {
+  max-width: 480px;
+  margin: 0 auto;
+
+  height: 72px;
+  padding: 10px 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* colonnes gauche/droite */
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.col.left { align-items: flex-start; }
+.col.right { align-items: flex-end; }
+
+.label {
+  font-size: 16px;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.value.value-loading {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+/* bouton + au centre */
+.add-fab {
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  color: #fff;
+  --mdc-fab-container-color: var(--accent);
+  --mdc-fab-icon-color: #fff;
+}
+
+.loading-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--overlay-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.value,
+.value.value-loading {
+  min-height: 22px;     /* réserve la même hauteur dans tous les cas */
+  line-height: 22px;    /* force la même hauteur de ligne */
+  display: flex;        /* centre verticalement le texte dans la ligne */
+  align-items: center;
+}

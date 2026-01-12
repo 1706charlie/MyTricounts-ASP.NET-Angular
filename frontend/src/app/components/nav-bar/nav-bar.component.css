@@ -1,0 +1,40 @@
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 56px;
+  padding: 0 8px;
+  margin: 0;
+  background-color: var(--toolbar-bg);
+  overflow-x: hidden;
+}
+
+mat-toolbar * {
+  color: white;
+}
+
+mat-toolbar .title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+mat-toolbar .spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar button:first-of-type {
+  margin-right: 8px;
+}
+
+::ng-deep mat-toolbar button:disabled mat-icon {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+::ng-deep mat-toolbar button mat-icon {
+  color: white;
+}
+
+::ng-deep .tooltip-menu-nav {
+  margin-left: 99px;
+}
